@@ -1,11 +1,24 @@
-from typing import List, Dict
+def generate_report(orders: list[dict[str, float]]) -> dict[str, float]:  # noqa: D100
+    """Считает общую выручку кафе по списку заказов.
 
-def generate_report(orders: List[Dict[str, float]]) -> Dict[str, float]:
-    """
-    Генерирует отчет по заказам в кафе.
-    
-    :param orders: Список словарей с данными заказов.
-    :return: Словарь с итоговыми метриками.
+    Args:
+        orders: Список словарей с данными метрик.
+
+    Returns:
+        Словарь с итоговой выручкой.
     """
     total_revenue = sum(order.get("total", 0.0) for order in orders)
     return {"total_revenue": total_revenue}
+
+
+def format_title(text: str, width: int = 40) -> str:
+    """Центрирует заголовок отчета и оформляет его рамкой.
+
+    Args:
+        text: Текст заголовка для форматирования.
+        width: Полная ширина строки. По умолчанию 40.
+
+    Returns:
+        Готовая строка, дополненная знаками равно по краям.
+    """
+    return text.center(width, "=")
